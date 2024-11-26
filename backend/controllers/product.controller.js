@@ -42,7 +42,7 @@ export const updateProduct = async (req, res) => {
 
     try {
         const updated = await Product.findByIdAndUpdate(id, product, { new: true });
-        res.status(200).json({ success: true, data: updated });
+        res.status(200).json({ success: true, data: updated, message: "Product updated successfully." });
     } catch (error) {
         console.log("ERROR", error.message);
         res.status(500).json({ success: false, message: "Server Error" });
@@ -60,7 +60,7 @@ export const deleteProduct = async (req, res) => {
     
     try {
         await Product.findByIdAndDelete(id);
-        res.status(200).json({ success: true, message: "Product deleted" });
+        res.status(200).json({ success: true, message: "Product deleted successfully" });
     } catch (error){
         console.log("ERROR: ", error.message);
         res.status(500).json({ success: false, message: "Server Error" });
